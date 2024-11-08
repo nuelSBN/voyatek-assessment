@@ -21,6 +21,12 @@ export default function TripItineraries({ openModal }: Props) {
     setSavedFlights(flights);
   }, []);
 
+  // const handleSaveFlights = (flights: IAggregationAirlines[]) => {
+  //   const updatedFlights = [...savedFlights, ...flights];
+  //   setSavedFlights(updatedFlights);
+  //   localStorage.setItem("selectedFlights", JSON.stringify(updatedFlights));
+  // };
+
   const handleRemoveFlight = (index: number) => {
     const updatedFlights = savedFlights.filter((_, i) => i !== index);
     setSavedFlights(updatedFlights);
@@ -41,7 +47,7 @@ export default function TripItineraries({ openModal }: Props) {
         <div className="min-h-[300px] rounded p-4 flex flex-col gap-4 bg-[#F0F2F5]">
           <div className="h-[46px] flex justify-between items-center">
             <div className="flex gap-2 items-center text-[#1D2433]">
-              <img src={airplaneFlight} alt={`Flights icon`} />
+              <img src={airplaneFlight} alt="Flights icon" />
               <span className="text-lg leading-[26px] font-semibold">
                 Flights
               </span>

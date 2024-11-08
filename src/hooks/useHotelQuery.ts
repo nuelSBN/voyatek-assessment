@@ -1,48 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import {
-  FlightSearchParams,
-  getAirports,
-  searchFlights,
-} from "../service/flights";
+import { HotelParams, getHotels } from "../service/hotels";
 import { getCurrencies } from "../service/meta";
 import { ICurrencyResponse } from "../types/currency";
-import { IFLightResponse } from "../types/flight";
+// import { IHotelResponse } from "../types/hotel";
 
-export default function useFlightSearch() {
-  const [formData, setFormData] = useState<FlightSearchParams>({
-    fromId: "BOM.AIRPORT",
-    toId: "DEL.AIRPORT",
-    departDate: "",
-    returnDate: "",
-    pageNo: 1,
+export default function useHotelSearch() {
+  const [formData, setFormData] = useState<HotelParams>({
+    hotel_id: "191605",
     adults: "1",
-    children: "0",
-    sort: "BEST",
-    cabinClass: "ECONOMY",
+    children_age: "",
+    room_qty: "1",
+    units: "1",
+    temperature_unit: "c",
+    languagecode: "en-us",
     currency_code: "USD",
   });
 
   const {
-    data: flightResults,
+    data: hotelResults,
     refetch,
-    isLoading,
-    error,
-  } = useQuery<IFLightResponse>({
-    queryKey: ["flights", formData],
-    queryFn: () => searchFlights(formData),
+    isLoading: isHotelLoading,
+    error: hotelError,
+  } = useQuery<unknown>({
+    queryKey: ["hotels", formData],
+    queryFn: () => getHotels(formData),
     enabled: false,
-  });
-
-  const {
-    data: airports,
-    isLoading: airportsLoading,
-    error: airportsError,
-  } = useQuery({
-    queryKey: ["airports"],
-    queryFn: () => getAirports(),
-    staleTime: Infinity,
-    gcTime: Infinity,
   });
 
   const { data: currency } = useQuery<ICurrencyResponse>({
@@ -54,9 +37,9 @@ export default function useFlightSearch() {
 
   const isFormComplete = () => {
     return (
-      formData.fromId &&
-      formData.toId &&
-      formData.departDate &&
+      formData.hotel_id &&
+      formData.adults &&
+      formData.room_qty &&
       formData.currency_code
     );
   };
@@ -79,7 +62,7 @@ export default function useFlightSearch() {
   };
 
   const handleSelectChange =
-    (name: keyof FlightSearchParams) => (selectedValue: string) => {
+    (name: keyof HotelParams) => (selectedValue: string) => {
       setFormData((prevData) => ({
         ...prevData,
         [name]: selectedValue,
@@ -94,12 +77,9 @@ export default function useFlightSearch() {
 
   return {
     formData,
-    flightResults,
-    isLoading,
-    error,
-    airports,
-    airportsLoading,
-    airportsError,
+    hotelResults,
+    isHotelLoading,
+    hotelError,
     currencyOptions,
     setFormData,
     handleSubmit,

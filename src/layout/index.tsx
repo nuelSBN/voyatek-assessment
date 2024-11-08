@@ -4,6 +4,7 @@ import Features from "../components/features";
 import Header from "../components/header";
 import Modal from "../components/modal";
 import FlightModalComponent from "../components/modal/flight-modal";
+import HotelModalComponent from "../components/modal/hotel-modal";
 import Sidebar from "../components/sidebar";
 import TripItineraries from "../components/trip-Itineraries";
 import useModal from "../hooks/useModal";
@@ -26,7 +27,7 @@ export default function Layout() {
       <Modal isOpen={isOpen} onClose={closeModal}>
         {contentType === "activity" && <h1>Activity content</h1>}
         {contentType === "flights" && <FlightModalComponent />}
-        {contentType === "hotels" && <h1>hotels content</h1>}
+        {contentType === "hotels" && <HotelModalComponent />}
       </Modal>
     </main>
   );

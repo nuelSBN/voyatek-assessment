@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { IAggregation, IAggregationAirlines } from "../../../../types/flight";
 
 interface FlightResultsComponentProps {
@@ -7,12 +8,32 @@ interface FlightResultsComponentProps {
 const FlightResultsComponent: React.FC<FlightResultsComponentProps> = ({
   flightResults,
 }) => {
-  const handleAddFlight = (airline: IAggregationAirlines) => {
+  const [selectedFlights, setSelectedFlights] = useState<
+    IAggregationAirlines[]
+  >([]);
+
+  useEffect(() => {
     const savedFlights = JSON.parse(
       localStorage.getItem("selectedFlights") || "[]"
     );
+    setSelectedFlights(savedFlights);
+  }, []);
 
-    const updatedFlights = [...savedFlights, airline];
+  const handleAddFlight = (airline: IAggregationAirlines) => {
+    const isSelected = selectedFlights.find(
+      (flight) => flight.name === airline.name
+    );
+
+    let updatedFlights;
+    if (isSelected) {
+      updatedFlights = selectedFlights.filter(
+        (flight) => flight.name !== airline.name
+      );
+    } else {
+      updatedFlights = [...selectedFlights, airline];
+    }
+
+    setSelectedFlights(updatedFlights);
     localStorage.setItem("selectedFlights", JSON.stringify(updatedFlights));
   };
 
@@ -22,10 +43,16 @@ const FlightResultsComponent: React.FC<FlightResultsComponentProps> = ({
       <ul className="space-y-4 flex flex-col gap-4">
         {flightResults.airlines.map((airline) => {
           const { logoUrl, minPrice, name, count } = airline;
+          const isActive = selectedFlights.some(
+            (flight) => flight.name === name
+          );
+
           return (
             <div
+              key={name}
               onClick={() => handleAddFlight(airline)}
-              className="flex w-full justify-between border-b border-gray cursor-pointer"
+              className={`flex w-full justify-between border-b border-gray cursor-pointer p-2 rounded 
+                ${isActive ? "bg-blue-100" : "bg-white"}`}
             >
               <div className="flex gap-4 w-[60%]">
                 <img
