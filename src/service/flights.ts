@@ -1,4 +1,3 @@
-// import { TSortBy } from "../types/flight";
 import { apiClient } from "./api";
 
 export interface FlightSearchParams {

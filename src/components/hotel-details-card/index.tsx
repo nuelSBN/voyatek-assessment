@@ -7,8 +7,6 @@ import wine from "../../assets/icons/Wine.svg";
 import bed from "../../assets/icons/Bed.svg";
 import calender from "../../assets/icons/calender.svg";
 
-// interface FlightDetailsCardProps {}
-
 const HotelDetailsCard = () => {
   return (
     <div className="rounded shadow-md bg-white h-[274px] flex">

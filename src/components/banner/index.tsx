@@ -1,4 +1,3 @@
-import React from "react";
 import backButton from "../../assets/icons/ArrowLeft.svg";
 import banner from "../../assets/images/banner.svg";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../button"; // Import the reusable Button component created earlier
+import Button from "../button";
 
 type CardProps = {
   title: string;

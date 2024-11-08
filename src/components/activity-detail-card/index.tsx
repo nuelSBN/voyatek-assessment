@@ -4,8 +4,6 @@ import mappin from "../../assets/icons/MapPin.svg";
 import star from "../../assets/icons/Star.svg";
 import clock from "../../assets/icons/Clock.svg";
 
-// interface FlightDetailsCardProps {}
-
 const ActivityDetailsCard = () => {
   return (
     <div className="rounded shadow-md bg-white h-[274px] flex">

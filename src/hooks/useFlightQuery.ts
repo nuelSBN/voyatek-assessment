@@ -45,11 +45,7 @@ export default function useFlightSearch() {
     gcTime: Infinity,
   });
 
-  const {
-    data: currency,
-    isLoading: currencyLoading,
-    error: currencyError,
-  } = useQuery<ICurrencyResponse>({
+  const { data: currency } = useQuery<ICurrencyResponse>({
     queryKey: ["currency"],
     queryFn: () => getCurrencies(),
     staleTime: Infinity,
@@ -105,9 +101,6 @@ export default function useFlightSearch() {
     airports,
     airportsLoading,
     airportsError,
-    currency,
-    currencyLoading,
-    currencyError,
     currencyOptions,
     setFormData,
     handleSubmit,

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import search from "../../assets/icons/MagnifyingGlass.svg";
-import { generalSearch } from "../../service/api";
 import { useDebounce } from "../../hooks/useDebounce";
+import { generalSearch } from "../../service/api";
 
 export default function TextField() {
   const [searchTerm, setSearchTerm] = useState("");

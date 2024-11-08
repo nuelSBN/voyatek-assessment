@@ -1,3 +1,3 @@
-import { apiClient } from "./api";
+// import { apiClient } from "./api";
 
 // export interface HotelParams {}
