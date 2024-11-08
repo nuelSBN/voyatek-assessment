@@ -15,6 +15,8 @@ export default function useHotelSearch() {
     temperature_unit: "c",
     languagecode: "en-us",
     currency_code: "USD",
+    arrival_date: "",
+    departure_date: "",
   });
 
   const {
