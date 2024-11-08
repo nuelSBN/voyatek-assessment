@@ -23,7 +23,7 @@ export default function HotelModalComponent() {
           handleSubmit={handleSubmit}
         />
       ) : (
-        <HotelResultsComponent />
+        <HotelResultsComponent hotelResults={hotelResults?.data.hotels} />
       )}
     </div>
   );

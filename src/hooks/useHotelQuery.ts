@@ -3,20 +3,21 @@ import { useState } from "react";
 import { HotelParams, getHotels } from "../service/hotels";
 import { getCurrencies } from "../service/meta";
 import { ICurrencyResponse } from "../types/currency";
-// import { IHotelResponse } from "../types/hotel";
+import { IHotelResponse } from "../types/hotel";
 
 export default function useHotelSearch() {
   const [formData, setFormData] = useState<HotelParams>({
-    hotel_id: "191605",
+    dest_id: "-2092174",
     adults: "1",
     children_age: "",
     room_qty: "1",
-    units: "1",
+    units: "metric",
     temperature_unit: "c",
     languagecode: "en-us",
     currency_code: "USD",
     arrival_date: "",
     departure_date: "",
+    search_type: "CITY",
   });
 
   const {
@@ -24,7 +25,7 @@ export default function useHotelSearch() {
     refetch,
     isLoading: isHotelLoading,
     error: hotelError,
-  } = useQuery<unknown>({
+  } = useQuery<IHotelResponse>({
     queryKey: ["hotels", formData],
     queryFn: () => getHotels(formData),
     enabled: false,
@@ -39,7 +40,7 @@ export default function useHotelSearch() {
 
   const isFormComplete = () => {
     return (
-      formData.hotel_id &&
+      formData.dest_id &&
       formData.adults &&
       formData.room_qty &&
       formData.currency_code

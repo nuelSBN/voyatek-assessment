@@ -1,13 +1,14 @@
 import { apiClient } from "./api";
 
 export interface HotelParams {
-  hotel_id: string;
+  dest_id: string;
   adults: string;
   children_age: string;
   room_qty: string;
   units: string;
   temperature_unit: "c";
   languagecode: "en-us";
+  search_type: "CITY";
   currency_code: string;
   arrival_date: string;
   departure_date: string;
@@ -15,7 +16,7 @@ export interface HotelParams {
 
 export const getHotels = async (params: HotelParams) => {
   try {
-    const response = await apiClient.get("/hotels/getHotelDetails", {
+    const response = await apiClient.get("/hotels/searchHotels", {
       params,
     });
 
