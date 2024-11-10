@@ -1,10 +1,10 @@
-import airplaneLanding from "../../assets/icons/AirplaneLanding.svg";
-import airplaneTakeoff from "../../assets/icons/AirplaneTakeoff.svg";
-import fileslate from "../../assets/icons/FilmSlate.svg";
-import forkknife from "../../assets/icons/ForkKnife.svg";
-import suitcase from "../../assets/icons/SuitcaseRollingNew.svg";
-import close from "../../assets/icons/X.svg";
-import { IAggregationAirlines } from "../../types/flight";
+import airplaneLanding from "../../../assets/icons/AirplaneLanding.svg";
+import airplaneTakeoff from "../../../assets/icons/AirplaneTakeoff.svg";
+import fileslate from "../../../assets/icons/FilmSlate.svg";
+import forkknife from "../../../assets/icons/ForkKnife.svg";
+import suitcase from "../../../assets/icons/SuitcaseRollingNew.svg";
+import close from "../../../assets/icons/X.svg";
+import { IAggregationAirlines } from "../../../types/flight";
 
 interface FlightDetailsCardProps {
   flight: IAggregationAirlines;
@@ -121,7 +121,7 @@ const FlightDetailsCard = ({
           src={close}
           alt="Close"
           className="cursor-pointer"
-          onClick={() => onRemove(index)} // Pass index to onRemove
+          onClick={() => onRemove(index)}
         />
       </div>
     </div>

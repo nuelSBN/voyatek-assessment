@@ -9,11 +9,11 @@ import Button from "../button";
 export default function Header() {
   return (
     <div className="h-[134px] w-full bg-white flex justify-between items-center px-10 sticky top-0 z-20">
-      <div className="flex gap-4 w-[30%]">
+      <div className="flex gap-4 w-[25%]">
         <img src={logo} alt="Go logo" title="Go logo" />
         <TextField />
       </div>
-      <div className="flex justify-between w-[60%]">
+      <div className="flex justify-between w-[70%]">
         <div className="flex gap-6">
           {firstNavbarItem.map((item, index) => {
             return <NavItem item={item} key={index} />;
